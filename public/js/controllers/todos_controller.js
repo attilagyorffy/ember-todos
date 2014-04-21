@@ -36,7 +36,15 @@ Todos.TodosController = Ember.ArrayController.extend({
    * TODO: Where is everyProperty() coming from? It's not documented...
   */
   allAreDone: function(key, value) {
-    return !!this.get('length') && this.everyProperty('isCompleted', true);
+    /* this property is being used to populate the current value of the checkbox */
+    if (value === undefined) {
+      return !!this.get('length') && this.everyProperty('isCompleted', true);
+    } else {
+      /* the checkbox was used by a user and we should set the isCompleted property of each todo to this new value. */
+      this.setEach('isCompleted', value);
+      this.invoke('save');
+      return value;
+    }
   }.property('@each.isCompleted'),
 
   completed: function() {
