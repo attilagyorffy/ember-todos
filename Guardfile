@@ -3,12 +3,12 @@
 
 guard 'livereload' do
   # MVC
-  watch(%r{js/models/.js})
-  watch(%r{js/views/.js})
-  watch(%r{js/controllers/.js})
+  watch(%r{public/js/models/.js})
+  watch(%r{public/js/views/.js})
+  watch(%r{public/js/controllers/.js})
 
   # Arbitary stuff
-  watch(%r{index.html})
-  watch(%r{js/application.js})
-  watch(%r{js/router.js})
+  watch(%r{public/index.html})
+  watch(%r{public/js/application.js})
+  watch(%r{public/js/router.js})
 end
