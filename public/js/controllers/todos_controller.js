@@ -30,6 +30,15 @@ Todos.TodosController = Ember.ArrayController.extend({
     return this.get('completed') > 0;
   }.property('completed'),
 
+
+  /*
+   * TODO: What are key, value arguments for? They are not used...
+   * TODO: Where is everyProperty() coming from? It's not documented...
+  */
+  allAreDone: function(key, value) {
+    return !!this.get('length') && this.everyProperty('isCompleted', true);
+  }.property('@each.isCompleted'),
+
   completed: function() {
     return this.filterBy('isCompleted', true).get('length');
   }.property('@each.isCompleted'),
